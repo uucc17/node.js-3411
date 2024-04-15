@@ -12,13 +12,14 @@ const middle1 = require("./my_modules/middle1")
 
 app.use(middle1);
 
-app.get('/', function(req, res){
+app.get('/', function(req, res, next){
     console.log("경로:", path.join(__dirname,"html")); //ㅇ?
-    res.send('Hello World2');
+    // res.send('Hello World2');
 });
 
 app.get('/home', function(req, res){
     res.sendFile(__dirname+'/home.html');
+    console.log("두번째 + 입니다,");
     res.send('홈입니다.');
 });
 

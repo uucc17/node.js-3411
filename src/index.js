@@ -6,7 +6,7 @@ app.use("/html2", express.static(path.join(__dirname,"html")))
 
 app.get('/', function(req, res){
     console.log(":", path.join(__dirname,"html")); //ㅇ?
-    res.send('Hello World');
+    res.send('Hello World2');
 });
 
 app.get('/home', function(req, res){

@@ -8,10 +8,13 @@ const server = http.createServer();
 server.on('request',async(req,res)=>{
 
     try{
-        let pathFileName = '/apple';
-        const data = await fs.readFile(`.${pathFileName}.html`);
-        res.writeHead(200,{'Content-Type':'text/html;charset=utf-8'}); //파일을 plain타입으로 읽는다. 
-        res.end(data);
+        let pathFileName = url.parse(req.url).pathname;
+        if(pathFileName != "/favicon.ico"){
+            pathFileName = pathFileName=="/"? "base": pathFileName;
+            const data = await fs.readFile(`.${pathFileName}.html`);
+            res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'});
+            res.end(data);
+        }
     }
     catch(err){
         console.error(err);

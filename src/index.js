@@ -12,6 +12,16 @@ const middle1 = require("./my_modules/middle1")
 
 app.use(middle1);
 
+app.all("/all", (req, res, next)=>{
+    res.send("all");
+    next();
+});
+
+app.use("/use",(req, res, next)=>{
+    res.send("use");
+    next();
+});
+
 app.get('/', function(req, res, next){
     console.log("경로:", path.join(__dirname,"html")); //ㅇ?
     // res.send('Hello World2');
